@@ -9,7 +9,10 @@
 <div class="row">
 	<div class="col-lg-12">
 		<h3>Project : <?php echo $project->project_name?></h3>
+		<?php echo validation_errors();?>
+		<?php echo $this->session->flashdata('message');?>
 		<div class="table-responsive">
+		<?php echo form_open();?>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
@@ -20,12 +23,34 @@
 					</tr>
 				</thead>
 				<tbody>
+<?php
+if (! empty($lang)) {
+   $no = 0;
+   foreach ($lang as $value) {
+      $no ++;
+      ?>
+               <tr>
+						<td><?php echo $no;?></td>
+						<td></td>
+						<td><?php echo $value->lang_name?></td>
+						<td style="text-align: center;"><?php echo $value->lang_value?></td>
+					</tr>
+<?php
+   }
+} else {
+   ?>
 				  <tr>
 						<td colspan="4" style="text-align: center; font-style: italic;">--
 							Data Not Found --</td>
 					</tr>
+<?php
+}
+?>
 				</tbody>
 			</table>
+			<?php echo anchor('loc', 'Back', 'class="btn btn-default"')?>
+		   <?php echo form_submit('submit', 'Submit', 'class="btn btn-primary"');?>
+			<?php echo form_close();?>
 		</div>
 	</div>
 </div>

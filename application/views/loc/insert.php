@@ -17,7 +17,7 @@
 				<thead>
 					<tr>
 						<th style="width: 5%">#</th>
-						<th style="width: 8%">Check</th>
+						<th style="width: 6%">Check</th>
 						<th>Language</th>
 						<th style="width: 25%">Average SLOC per Function Point</th>
 					</tr>
@@ -31,7 +31,9 @@ if (! empty($lang)) {
       ?>
                <tr>
 						<td><?php echo $no;?></td>
-						<td></td>
+						<td style="text-align: center;">
+						   <input type="checkbox">
+						</td>
 						<td><?php echo $value->lang_name?></td>
 						<td style="text-align: center;"><?php echo $value->lang_value?></td>
 					</tr>

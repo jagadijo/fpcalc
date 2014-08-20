@@ -32,7 +32,7 @@ if (! empty($lang)) {
                <tr>
 						<td><?php echo $no;?></td>
 						<td style="text-align: center;">
-						   <input type="checkbox">
+						   <?php echo form_checkbox('lang_id[]', $value->lang_id, (!empty($value->pl_lang_id))?TRUE:FALSE); ?>
 						</td>
 						<td><?php echo $value->lang_name?></td>
 						<td style="text-align: center;"><?php echo $value->lang_value?></td>
@@ -42,9 +42,8 @@ if (! empty($lang)) {
 } else {
    ?>
 				  <tr>
-						<td colspan="4" style="text-align: center; font-style: italic;">--
-							Data Not Found --</td>
-					</tr>
+				     <td colspan="4" style="text-align: center; font-style: italic;">-- Data Not Found --</td>
+				  </tr>
 <?php
 }
 ?>

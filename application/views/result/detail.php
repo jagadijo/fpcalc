@@ -90,7 +90,7 @@ if (empty($result['ef'])) {
 					</tr>
 <?php
    }
-?>
+   ?>
                <tr>
 						<td style="text-align: center; font-weight: bold;">Total (N)</td>
 						<td style="text-align: center; font-weight: bold;"><?php echo $result['ef_total']?></td>
@@ -118,6 +118,21 @@ if (empty($result['ef'])) {
 		</p>
 
 		<h4>Convert to LOC (Optional)</h4>
+		<p>LOC = AFP x LOC / AFP</p>
+<?php
+$afp = $result['cwf_total'] * (0.65 + (0.01 * $result['ef_total']));
+if (! empty($afp)) {
+   foreach ($result['loc'] as $value) {
+      if (! empty($value->pl_lang_id)) {
+         echo '<p>LOC (' . $value->lang_name . ') = (' . $afp . ' x ' . $value->lang_value . ') / ' . $afp . ' = ';
+         echo '<strong>' . ($afp * $value->lang_value) / $afp . '</strong> LOC = <strong>' .
+             (($afp * $value->lang_value) / $afp) / 1000 . '</strong> KLOC</p>';
+      }
+   }
+} else {
+   echo '<p>LOC = <strong>0</strong></p>';
+}
+?>
 	</div>
 </div>
 <!-- /.row -->

@@ -47,10 +47,12 @@ class Result_m extends MY_Model
       $this->load->model('project_m');
       $this->load->model('cwf_m');
       $this->load->model('ef_m');
+      $this->load->model('loc_m');
       
       $project = $this->project_m->get_data_project_by_id($project_id);
       $cwf = $this->cwf_m->get_data_cwf_by_project($project_id);
       $ef = $this->ef_m->get_data_ef_by_project_id($project_id);
+      $loc = $this->loc_m->get_lang_by_project_id($project_id);
       
       $total_ef = 0;
       foreach ($ef as $value_ef) {
@@ -69,8 +71,8 @@ class Result_m extends MY_Model
          'cwf' => $cwf,
          'cwf_total' => $total_cwf,
          'ef' => $ef,
-         'ef_total' => $total_ef
-      )
-      ;
+         'ef_total' => $total_ef,
+         'loc' => $loc
+      );
    }
 }

@@ -7,7 +7,7 @@ class Ef_m extends MY_Model
       'trans_rating' => array(
          'field' => 'trans_rating[]',
          'label' => 'rating',
-         'rules' => 'trim|required|inval'
+         'rules' => 'trim|required|intval'
       )
    );
 
